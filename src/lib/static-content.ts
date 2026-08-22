@@ -35,7 +35,7 @@ export const serviceCategoryIds: string[] = [
   "316", // Astrology
 ];
 
-import homebake from "@public/homelistimg/homebake.png";
+import homebake from "@public/homeListimg/homebake.png";
 
 export interface CuratedTile {
   label: string;
@@ -57,33 +57,33 @@ export const curatedBusiness: CuratedSection[] = [
   {
     title: "Everyday beauty & glow",
     tiles: [
-      { label: "Beauty Parlour", img: "/homelistimg/mackup.png", term: "beauty parlour" },
-      { label: "Salon Spots", img: "/homelistimg/salonSpot.png", term: "salon" },
-      { label: "Massage", img: "/homelistimg/massage.png", term: "massage" },
+      { label: "Beauty Parlour", img: "/homeListimg/mackup.png", term: "beauty parlour" },
+      { label: "Salon Spots", img: "/homeListimg/salonSpot.png", term: "salon" },
+      { label: "Massage", img: "/homeListimg/massage.png", term: "massage" },
     ],
   },
   {
     title: "Shops, and showrooms",
     tiles: [
-      { label: "Bike Showroom", img: "/homelistimg/bikeshowroom.png", term: "bike showroom" },
-      { label: "Mobile Showroom", img: "/homelistimg/mobail.png", term: "mobile" },
-      { label: "Laptop Showroom", img: "/homelistimg/laptopshowroom.png", term: "laptop" },
+      { label: "Bike Showroom", img: "/homeListimg/bikeshowroom.png", term: "bike showroom" },
+      { label: "Mobile Showroom", img: "/homeListimg/mobail.png", term: "mobile" },
+      { label: "Laptop Showroom", img: "/homeListimg/laptopshowroom.png", term: "laptop" },
     ],
   },
   {
     title: "Fashion jewellery collection",
     tiles: [ 
-      { label: "Cloth Store", img: "/homelistimg/cloths.png", term: "cloth store" },
-      { label: "Diamond Store", img: "/homelistimg/diamondstore.png", term: "jewellery" },
-      { label: "Wedding Jewellery Store", img: "/homelistimg/weddingjewellry.png", term: "wedding jewellery" },
+      { label: "Cloth Store", img: "/homeListimg/cloths.png", term: "cloth store" },
+      { label: "Diamond Store", img: "/homeListimg/diamondstore.png", term: "jewellery" },
+      { label: "Wedding Jewellery Store", img: "/homeListimg/weddingjewellry.png", term: "wedding jewellery" },
     ],
   },
   {
     title: "Entertainment & Events",
     tiles: [
-      { label: "Movie", img: "/homelistimg/movie.png", term: "theatre" },
-      { label: "Event", img: "/homelistimg/event.png", term: "events" },
-      { label: "Theme Parks", img: "/homelistimg/park.png", term: "theme park" },
+      { label: "Movie", img: "/homeListimg/movie.png", term: "theatre" },
+      { label: "Event", img: "/homeListimg/event.png", term: "events" },
+      { label: "Theme Parks", img: "/homeListimg/park.png", term: "theme park" },
     ],
   },
 ];
@@ -119,7 +119,7 @@ export const curatedServices: CuratedSection[] = [
     tiles: [
       { label: "Photographer", img: ph("photographer"), term: "photographer" },
       { label: "Makeup Artist", img: ph("makeup"), term: "makeup artist" },
-      { label: "Home Baker", img: "/homelistimg/homebake.png", term: "bakery" },
+      { label: "Home Baker", img: "/homeListimg/homebake.png", term: "bakery" },
     ],
   },
 ];
