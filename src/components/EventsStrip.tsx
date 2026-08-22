@@ -50,7 +50,7 @@ export default async function EventsStrip() {
   const loop = [...items, ...items];
 
   return (
-    <section className="mx-auto mt-10 max-w-7xl px-4 lg:px-6">
+    <section className="mx-auto mt-10  max-w-[1450px] px-4 lg:px-6">
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-bold text-ink">Latest Events in Your Location</h2>
         <Link href="/events" className="text-sm font-semibold text-brand hover:underline">

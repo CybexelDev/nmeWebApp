@@ -20,6 +20,8 @@ import { getBusiness, getReviews } from "@/lib/api";
 import { getSessionUser } from "@/lib/auth";
 import { ok, type Review } from "@/lib/types";
 import { initials, mapsLink, monthYear, parseSocialLinks, telLink, validImageUrl } from "@/lib/utils";
+import { BadgeCheck } from 'lucide-react';
+import Gallery from "@/components/Gallery";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -60,14 +62,21 @@ export default async function BusinessDetailPage({ params }: Props) {
       : null;
 
   return (
-    <main className="mx-auto max-w-7xl px-4 py-6 lg:px-6">
+    <main className="mx-auto max-w-7xl px-4 py-3 lg:px-6">
       {/* ── Hero card: gallery + identity + actions ─────────────────────── */}
       <section className="rounded-3xl bg-white p-4 shadow-sm sm:p-6">
         <Gallery images={gallery} name={b.businessName} />
 
         <div className="mt-5 flex flex-wrap items-start justify-between gap-4">
           <div>
-            <h1 className="text-2xl font-bold text-ink sm:text-3xl">{b.businessName}</h1>
+            <div className="flex  gap-2">
+              <Image src={validImageUrl(b.logo_url) || "/businessList/def.png"} alt={b.businessName} width={40} height={40} className="h-10 w-10 rounded-full object-cover" />
+              <h1 className="text-2xl font-bold text-ink sm:text-3xl">{b.businessName}</h1>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3 md:px-3 py-1 text-xs font-semibold text-green-600">
+                   <BadgeCheck className="h-3 w-3" />
+                   <span className="hidden sm:inline">Verified</span>
+                 </span>
+            </div>
             {b.location && (
               <p className="mt-1.5 flex items-center gap-1.5 text-sm text-gray-500">
                 <MapPin className="h-4 w-4 shrink-0" /> {b.location}
@@ -118,7 +127,7 @@ export default async function BusinessDetailPage({ params }: Props) {
           )}
 
           {/* Photos with item name/price when the owner added them */}
-          {photos.length > 0 && (
+          {/* {photos.length > 0 && (
             <section className="rounded-3xl bg-white p-6 shadow-sm">
               <h2 className="text-lg font-bold text-ink">Business Photos</h2>
               <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -144,7 +153,7 @@ export default async function BusinessDetailPage({ params }: Props) {
                 ))}
               </div>
             </section>
-          )}
+          )} */}
 
           {/* Reviews */}
           <section className="rounded-3xl bg-white p-6 shadow-sm">
@@ -253,39 +262,41 @@ export default async function BusinessDetailPage({ params }: Props) {
 }
 
 /** Mockup-style gallery: one large image + up to 4 tiles, "+N Photos" on the last. */
-function Gallery({ images, name }: { images: string[]; name: string }) {
-  if (images.length === 0) {
-    return (
-      <div className="flex aspect-[3/1] items-center justify-center rounded-2xl bg-gray-100 text-gray-300">
-        <Store className="h-12 w-12" />
-      </div>
-    );
-  }
-  const [main, ...rest] = images;
-  const tiles = rest.slice(0, 4);
-  const extra = rest.length - tiles.length;
-  return (
-    <div className="grid gap-3 sm:grid-cols-2">
-      <span className="relative block aspect-[4/3] overflow-hidden rounded-2xl bg-gray-100 sm:aspect-auto sm:min-h-72">
-        <Image src={main} alt={name} fill sizes="(min-width: 640px) 50vw, 100vw" className="object-cover" priority />
-      </span>
-      {tiles.length > 0 && (
-        <div className="grid grid-cols-2 gap-3">
-          {tiles.map((src, i) => (
-            <span key={src + i} className="relative block aspect-[4/3] overflow-hidden rounded-2xl bg-gray-100">
-              <Image src={src} alt="" fill sizes="25vw" className="object-cover" />
-              {i === tiles.length - 1 && extra > 0 && (
-                <span className="absolute inset-0 flex items-center justify-center bg-black/50 text-sm font-bold text-white">
-                  +{extra} Photos
-                </span>
-              )}
-            </span>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
+// function Gallery({ images, name }: { images: string[]; name: string }) {
+//   if (images.length === 0) {
+//     return (
+//       <div className="flex aspect-[3/1] items-center justify-center rounded-2xl bg-gray-100 text-gray-300">
+//         <Store className="h-12 w-12" />
+//       </div>
+//     );
+//   }
+//   const [main, ...rest] = images;
+//   const tiles = rest.slice(0, 4);
+//   const extra = rest.length - tiles.length;
+//   return (
+//     <div className="grid gap-3 sm:grid-cols-2">
+//       <span className="relative block aspect-[4/3] overflow-hidden rounded-2xl bg-gray-100 sm:aspect-auto sm:min-h-72">
+//         <Image src={main} alt={name} fill sizes="(min-width: 640px) 50vw, 100vw" className="object-cover" priority />
+//       </span>
+//       {tiles.length > 0 && (
+//         <div className="grid grid-cols-2 gap-3">
+//           {tiles.map((src, i) => (
+//             <span key={src + i} className="relative block aspect-[4/3] overflow-hidden rounded-2xl bg-gray-100">
+//               <Image src={src} alt="" fill sizes="25vw" className="object-cover" />
+//               {i === tiles.length - 1 && extra > 0 && (
+//                 <span className="absolute inset-0 flex items-center justify-center bg-black/50 text-sm font-bold text-white">
+//                   +{extra} Photos
+//                 </span>
+//               )}
+//             </span>
+//           ))}
+//         </div>
+//       )}
+//     </div>
+//   );
+// }
+
+
 
 function Histogram({ reviews, total }: { reviews: Review[]; total: number }) {
   const counts = [5, 4, 3, 2, 1].map((star) => ({

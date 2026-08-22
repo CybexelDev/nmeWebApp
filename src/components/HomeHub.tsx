@@ -19,17 +19,17 @@ export default function HomeHub({ categories }: { categories: Category[] }) {
   const curated = tab === 0 ? curatedBusiness : curatedServices;
   const serviceIds = new Set(serviceCategoryIds);
   const tabCategories = categories.filter((c) => serviceIds.has(c.id) === (tab === 1));
-  const tiles = tabCategories.slice(0, 7);
+  const tiles = tabCategories.slice(0, 15);
 
   return (
-    <section className="mx-auto mt-4 max-w-7xl px-4 lg:px-6">
+    <section className="mx-auto mt-4 max-w-[1500px] px-4 lg:px-6 ">
       <div className="rounded-3xl bg-white p-4 shadow-sm sm:p-6">
         <div className="flex justify-center">
           <SegmentedToggle value={tab} onChange={setTab} />
         </div>
 
         {/* Category icon tiles — live data. Same tree on both tabs (single API). */}
-        <div className="mt-6 grid grid-cols-4 gap-3 sm:grid-cols-8">
+        <div className="mt-6 grid grid-cols-4 gap-2 md:gap-3 sm:grid-cols-8">
           {tiles.map((cat) => (
             <Link
               key={cat.id}
@@ -44,7 +44,7 @@ export default function HomeHub({ categories }: { categories: Category[] }) {
                 )}
               </span>
               <span className="line-clamp-2 text-center text-[11px] font-semibold text-gray-700 group-hover:text-brand">
-                {cat.service_name}
+                {cat.service_name.length > 14 ? cat.service_name.slice(0, 14) + "..." : cat.service_name}
               </span>
             </Link>
           ))}
@@ -62,11 +62,10 @@ export default function HomeHub({ categories }: { categories: Category[] }) {
         {/* Promo tiles → live sections of the app. Artwork (person popping out
             of the pill) extracted from the design mockup — replace the PNGs in
             public/promo/ with higher-res exports to sharpen them. */}
-        <div className="mt-2 grid gap-4 sm:grid-cols-2">
+        <div className="mt-2 grid gap-1 md:gap-4 sm:grid-cols-2 ">
           <PromoTile href="/jobs" img="/promo/explore-jobs.png" alt="Explore Jobs — browse job categories" />
           <PromoTile href="/offers" img="/promo/deals-discounts.png" alt="Deals & Discounts — shop exclusive deals" />
         </div>
-
       </div>
 
       {/* Curated 2×2 grid — static placeholder tiles linking into real search.
@@ -77,17 +76,17 @@ export default function HomeHub({ categories }: { categories: Category[] }) {
             <span className="absolute left-0 top-0 z-10 inline-flex items-center rounded-[1.6rem] bg-white px-7 py-4 text-base font-bold text-ink shadow-[0_10px_24px_rgba(17,24,39,0.06)]">
               {section.title}
             </span>
-            <div className="relative rounded-[2.5rem] bg-white px-6 pb-7 pt-20 shadow-sm">
+            <div className="relative rounded-[2.5rem] bg-white px-4 pb-7 pt-20 shadow-sm">
               <Link
                 href={`/listing?term=${encodeURIComponent(section.tiles[0]?.term ?? "")}`}
                 className="absolute right-6 top-6 rounded-[1.1rem] bg-indigo-100 px-6 py-3 text-sm font-bold text-ink transition-colors hover:bg-indigo-200"
               >
                 View All
               </Link>
-              <div className="grid grid-cols-3 gap-4 sm:gap-6">
+              <div className="grid grid-cols-3 gap-2 md:gap-4 sm:gap-6">
                 {section.tiles.map((tile) => (
                   <Link key={tile.label} href={`/listing?term=${encodeURIComponent(tile.term)}`} className="group">
-                    <span className="relative block aspect-[4/3] overflow-hidden rounded-[1.25rem] bg-gray-100">
+                    <span className="relative block aspect-[4/3] overflow-hidden rounded-[1rem] md:rounded-[1.25rem] bg-gray-100">
                       <Image
                         src={tile.img}
                         alt={tile.label}

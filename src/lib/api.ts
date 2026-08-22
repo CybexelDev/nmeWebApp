@@ -98,15 +98,19 @@ async function postFormData<T>(path: string, body: FormData, token?: string): Pr
 
 // ------------------------------------------------------- public browse
 
-export function getCategories() {
-  return get<ApiEnvelope<Category[]>>("/api/v2/getService");
+export async function getCategories() {
+  const data = await get<ApiEnvelope<Category[]>>("/api/v2/getService");
+   console.log("getCategories responseeeeeeeeeeee:", data);
+  return data;
 }
 
-export function getSubcategories(catId: string) {
-  return postForm<SubcategoryResponse>("/api/v2/getSubService", { cat_id: catId });
+export async function getSubcategories(catId: string) {
+  const data = await postForm<SubcategoryResponse>("/api/v2/getSubService", { cat_id: catId });
+    // console.log("getCategories responseeeeeeeeeeee:", data);
+  return data;
 }
 
-export function listBusinesses(params: {
+export async function listBusinesses(params: {
   category_id?: string;
   subcategory_id?: string;
   term?: string;
@@ -119,19 +123,25 @@ export function listBusinesses(params: {
   if (params.term) qs.set("term", params.term);
   qs.set("page", String(params.page ?? 1));
   qs.set("limit", String(params.limit ?? 20));
-  return get<BusinessListResponse>(`/api/v2/list_businesses?${qs}`, { revalidate: 60 });
+  const data = await get<BusinessListResponse>(`/api/v2/list_businesses?${qs}`, { revalidate: 60 });
+  // console.log("listBusinesses responseeeee:", data);
+  return data;
 }
 
-export function getBusiness(id: string) {
-  return get<ApiEnvelope<BusinessDetail>>(`/api/v2/get_business/${id}`, { revalidate: 60 });
+export async function getBusiness(id: string) {
+  const data = await get<ApiEnvelope<BusinessDetail>>(`/api/v2/get_business/${id}`, { revalidate: 60 });
+  // console.log("getBusiness responseeeee:", data);
+  return data;
 }
 
 /**
  * Home hero slider images (admin-managed). Not on production yet as of
  * 2026-07-17 (404) — callers must fall back to static banner content.
  */
-export function getWebSliders() {
-  return get<ApiEnvelope<WebSlide[]>>("/api/v2/getWebSliders", { revalidate: 300 });
+export async function getWebSliders() {
+  const data = await get<ApiEnvelope<WebSlide[]>>("/api/v2/getWebSliders", { revalidate: 300 });
+  // console.log("getWebSliders response:", data);
+  return data;
 }
 
 // ------------------------------------------- website CMS (API-key gated)

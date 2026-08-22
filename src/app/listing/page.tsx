@@ -7,6 +7,7 @@ import OffersStrip from "@/components/OffersStrip";
 import TrendingSearches from "@/components/TrendingSearches";
 import { getCategories, getOffers, listBusinesses } from "@/lib/api";
 import { ok } from "@/lib/types";
+import Image from "next/image";
 
 interface Props {
   searchParams: Promise<{
@@ -88,13 +89,13 @@ export default async function ListingPage({ searchParams }: Props) {
           </div>
 
           {/* Lead-gen card from the mockup's right rail */}
-          <aside className="sticky top-20 hidden w-80 shrink-0 xl:block">
-            <div className="rounded-3xl bg-white p-6 text-center shadow-sm">
-              <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-50 text-xl">
+          <aside className="sticky top-20 hidden w-80 shrink-0 xl:block" >
+            <div className="rounded-3xl bg-white p-6 text-center shadow-sm" style={{backgroundImage: "url(/businessList/sbg.png)", backgroundSize: "cover", backgroundPosition: "center"}}>
+              {/* <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-50 text-xl">
                 ❓
-              </span>
-              <h2 className="mt-3 text-lg font-bold text-ink">Check out top businesses</h2>
-              <p className="mt-1 text-xs text-gray-500">
+              </span> */}
+              <h2 className="mt-3 text-[23px] font-bold text-ink mt-4">Check out top businesses</h2>
+              <p className="mt-1 text-[11px]  text-[#0a0f1b] max-w-[280px] text-center mx-auto">
                 Own a business? Get listed and reach thousands of customers directly.
               </p>
               <Link
@@ -103,9 +104,10 @@ export default async function ListingPage({ searchParams }: Props) {
               >
                 Register your Business
               </Link>
-              <p className="mt-3 text-[10px] text-gray-400">
+              <p className="mt-3 text-[10px] text-gray-500">
                 By submitting, you agree to our Terms of Use and Privacy Policy.
               </p>
+                 <Image src="/businessList/per.png" alt="Background" className="mx-auto mt-4 rounded-lg" width={300} height={200} />
             </div>
           </aside>
         </div>

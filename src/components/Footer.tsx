@@ -81,7 +81,7 @@ export default async function Footer() {
               <span className="block text-[10px] text-gray-400">Download on the</span>
               <span className="text-sm font-semibold">App Store</span>
             </a>
-            <a href="#" className="rounded-xl border border-white/15 px-4 py-2.5 text-left leading-tight hover:bg-white/5">
+            <a href="https://play.google.com/store/apps/details?id=com.smart.nme" className="rounded-xl border border-white/15 px-4 py-2.5 text-left leading-tight hover:bg-white/5">
               <span className="block text-[10px] text-gray-400">Download on the</span>
               <span className="text-sm font-semibold">Play Store</span>
             </a>

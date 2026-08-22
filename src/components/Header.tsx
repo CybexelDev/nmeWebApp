@@ -20,10 +20,9 @@ export default async function Header({ user }: { user: SessionUser | null }) {
   const location = parseLocation(jar.get(LOCATION_COOKIE)?.value);
 
   return (
-    <header className="sticky top-0 z-40 bg-white shadow-sm">
-      <div className="mx-auto flex max-w-7xl items-center gap-3 px-4 py-2.5 lg:px-6">
+    <header className="sticky top-0 z-40 bg-white shadow-sm m-3 rounded-2xl">
+      <div className="mx-auto flex max-w-8xl w-full  items-center gap-4 px-4 py-2.5 lg:px-7">
         <Logo />
-
         <LocationPicker initial={location} />
 
         <div className="hidden flex-1 md:block">
@@ -47,7 +46,7 @@ export default async function Header({ user }: { user: SessionUser | null }) {
           aria-label="Notifications"
           className="hidden h-10 w-10 items-center justify-center rounded-full border border-gray-200 text-gray-700 hover:bg-gray-50 sm:flex"
         >
-          <Bell className="h-4.5 w-4.5" />
+          <Bell className="h-4.5 w-4.5  text-[#ED1C27] cursor-pointer" />
         </button>
 
         <Link
@@ -56,11 +55,11 @@ export default async function Header({ user }: { user: SessionUser | null }) {
         >
           Register your Business
         </Link>
-
+       
         <Link
           href="/account"
           aria-label="Account"
-          className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-gray-100 text-sm font-semibold text-gray-600 ring-1 ring-gray-200"
+          className="ml-auto flex h-10 w-10 flex-shrink-0 items-center justify-center overflow-hidden rounded-full bg-gray-100 text-sm font-semibold text-gray-600 ring-1 ring-[#18489F] hover:ring-[#1563E0] focus:outline-none focus:ring-2 focus:ring-[#18489F]"
         >
           {user?.userImage ? (
             <Image src={user.userImage} alt="" width={40} height={40} className="h-full w-full object-cover" />

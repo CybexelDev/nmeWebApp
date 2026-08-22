@@ -35,6 +35,8 @@ export const serviceCategoryIds: string[] = [
   "316", // Astrology
 ];
 
+import homebake from "@public/homelistimg/homebake.png";
+
 export interface CuratedTile {
   label: string;
   img: string;
@@ -55,33 +57,33 @@ export const curatedBusiness: CuratedSection[] = [
   {
     title: "Everyday beauty & glow",
     tiles: [
-      { label: "Beauty Parlour", img: ph("parlour"), term: "beauty parlour" },
-      { label: "Salon Spots", img: ph("salon"), term: "salon" },
-      { label: "Massage", img: ph("massage"), term: "massage" },
+      { label: "Beauty Parlour", img: "/homelistimg/mackup.png", term: "beauty parlour" },
+      { label: "Salon Spots", img: "/homelistimg/salonSpot.png", term: "salon" },
+      { label: "Massage", img: "/homelistimg/massage.png", term: "massage" },
     ],
   },
   {
     title: "Shops, and showrooms",
     tiles: [
-      { label: "Bike Showroom", img: ph("bike"), term: "bike showroom" },
-      { label: "Mobile Showroom", img: ph("mobile"), term: "mobile" },
-      { label: "Laptop Showroom", img: ph("laptop"), term: "laptop" },
+      { label: "Bike Showroom", img: "/homelistimg/bikeshowroom.png", term: "bike showroom" },
+      { label: "Mobile Showroom", img: "/homelistimg/mobail.png", term: "mobile" },
+      { label: "Laptop Showroom", img: "/homelistimg/laptopshowroom.png", term: "laptop" },
     ],
   },
   {
     title: "Fashion jewellery collection",
-    tiles: [
-      { label: "Cloth Store", img: ph("cloth"), term: "cloth store" },
-      { label: "Diamond Store", img: ph("diamond"), term: "jewellery" },
-      { label: "Wedding Jewellery Store", img: ph("wedding-jewel"), term: "wedding jewellery" },
+    tiles: [ 
+      { label: "Cloth Store", img: "/homelistimg/cloths.png", term: "cloth store" },
+      { label: "Diamond Store", img: "/homelistimg/diamondstore.png", term: "jewellery" },
+      { label: "Wedding Jewellery Store", img: "/homelistimg/weddingjewellry.png", term: "wedding jewellery" },
     ],
   },
   {
     title: "Entertainment & Events",
     tiles: [
-      { label: "Movie", img: ph("movie"), term: "theatre" },
-      { label: "Event", img: ph("event"), term: "events" },
-      { label: "Theme Parks", img: ph("themepark"), term: "theme park" },
+      { label: "Movie", img: "/homelistimg/movie.png", term: "theatre" },
+      { label: "Event", img: "/homelistimg/event.png", term: "events" },
+      { label: "Theme Parks", img: "/homelistimg/park.png", term: "theme park" },
     ],
   },
 ];
@@ -117,7 +119,7 @@ export const curatedServices: CuratedSection[] = [
     tiles: [
       { label: "Photographer", img: ph("photographer"), term: "photographer" },
       { label: "Makeup Artist", img: ph("makeup"), term: "makeup artist" },
-      { label: "Home Baker", img: ph("baker"), term: "bakery" },
+      { label: "Home Baker", img: "/homelistimg/homebake.png", term: "bakery" },
     ],
   },
 ];

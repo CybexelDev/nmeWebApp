@@ -60,6 +60,8 @@ export interface BusinessListItem {
   businessName: string;
   dealWith: string;
   location: string;
+  latitude: string;
+  longitude: string;
   mobileNumber: string;
   whatsappNumber: string;
   serviceId: string;

@@ -4,6 +4,8 @@ import { MapPin, Phone, Store } from "lucide-react";
 import WhatsAppButton from "./WhatsAppButton";
 import type { BusinessListItem } from "@/lib/types";
 import { telLink, validImageUrl } from "@/lib/utils";
+import { BadgeCheck } from 'lucide-react';
+import MapButton from "./MapButton";
 
 /**
  * Listing card. Deliberately omits the mockup's rating / verified / distance
@@ -13,7 +15,7 @@ import { telLink, validImageUrl } from "@/lib/utils";
 export default function BusinessCard({ business }: { business: BusinessListItem }) {
   const image = validImageUrl(business.image);
   return (
-    <article className="rounded-3xl bg-white p-4 shadow-sm transition-shadow hover:shadow-md">
+    <article className="rounded-4xl bg-white p-4 shadow-sm transition-shadow hover:shadow-md relative" >
       <div className="flex gap-4">
         <Link
           href={`/business/${business.id}`}
@@ -65,6 +67,12 @@ export default function BusinessCard({ business }: { business: BusinessListItem 
       <div className="mt-3 flex gap-2 sm:hidden">
         <CardActions business={business} />
       </div>
+     <div className="absolute bottom-4 md:top-4 right-4">
+  <span className="inline-flex items-center gap-1.5 rounded-full bg-green-100 px-1 md:px-3 py-1 text-xs font-semibold text-green-600">
+    <BadgeCheck className="h-3 w-3" />
+    <span className="hidden sm:inline">Verified</span>
+  </span>
+</div>
     </article>
   );
 }
@@ -81,6 +89,7 @@ function CardActions({ business }: { business: BusinessListItem }) {
         </a>
       )}
       {business.whatsappNumber && <WhatsAppButton number={business.whatsappNumber} name={business.businessName} />}
+      {business.latitude && business.longitude && ( <MapButton latitude={business.latitude} longitude={business.longitude} />)}
     </>
   );
 }

@@ -38,7 +38,7 @@ export default async function CategoryPage({ params }: Props) {
         {/* Category rail (mockup's left sidebar) */}
         <aside className="hidden w-72 shrink-0 lg:block">
           <nav aria-label="Categories" className="rounded-3xl bg-white p-3 shadow-sm">
-            <ul className="max-h-[70vh] space-y-1 overflow-y-auto pr-1">
+            <ul className="max-h-[78vh] space-y-1 overflow-y-auto pr-1">
               {categories.map((cat) => {
                 const active = cat.id === id;
                 return (

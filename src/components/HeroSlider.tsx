@@ -32,9 +32,9 @@ export default function HeroSlider({ slides }: { slides: WebSlide[] }) {
   if (count === 0) return null;
 
   return (
-    <section className="mx-auto max-w-7xl px-4 pt-4 lg:px-6">
+    <section className="mx-auto max-w-[1500px] px-4 pt-2 md:pt-4 lg:px-6">
       <div
-        className="group relative overflow-hidden rounded-3xl bg-gray-100"
+        className="group relative overflow-hidden rounded-3xl md:rounded-3xl bg-gray-100"
         onMouseEnter={() => (hovering.current = true)}
         onMouseLeave={() => (hovering.current = false)}
         onTouchStart={(e) => (touchX.current = e.touches[0].clientX)}
